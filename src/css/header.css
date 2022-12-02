@@ -18,8 +18,12 @@ code {
     padding: 0;
 }
 
+#nav .container-fluid {
+    padding: 0 !important;
+}
+
 #nav .navbar-toggler {
-    margin: 8px 0;
+    margin: 8px 12px;
 }
 
 #nav li a {
