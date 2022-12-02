@@ -6,15 +6,12 @@ for(var dropdownElement of dropdownElements) {
     var dropdownIcon = dropdownElement.querySelector("i.subnav-toggler");
     var dropdownMenu = dropdownElement.querySelector("ul.dropdown-menu");
 
-    var subnavDisplayed = dropdownMenu.style.display === "block";
-
-    console.log(subnavDisplayed);
-    
-    if(subnavDisplayed) {
+    dropdownElement.onmouseover = function() {
         dropdownIcon.classList.remove('fa-caret-down');
         dropdownIcon.classList.add('fa-caret-up');
     }
-    else {
+    
+    dropdownElement.onmouseout = function() {
         dropdownIcon.classList.remove('fa-caret-up');
         dropdownIcon.classList.add('fa-caret-down');
     }
