@@ -1,14 +1,36 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
+body{
+  font-family:"Montserrat", sans-serif;
+  font-weight: 500;
+  margin: 0;
+}
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+  @media (min-width:768px) {
+    .news-input{
+      width: 50%;
+    }
+  }
+  .section-caption
+  {
+    color: #284664;
+    font-size: 20px;
+    font-weight:bold;
+    margin: 0px 0px 20px 0px;
+    text-align: left;
+    
+  }
+  .reason{
+    color: #284664;
   
+    font-weight:700;
+    min-height: 30px;
+    
+  }
+  .our-test-item{
+    height: 253px;
+  }
+  .form-control{
+    background-color: aliceblue;
+  }
