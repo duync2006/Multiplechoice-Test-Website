@@ -31,4 +31,7 @@
     elseif($getPage == "logout") {
         header("Location: logout.php");
     }
+    else {
+        header("Location: home.php");
+    }
 ?>
