@@ -1,38 +1,37 @@
-<!DOCTYPE html>
-<html>
+<?php
+    session_start();
 
-<head>
-    <meta charset="utf-8">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/body.css">
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Icon Package -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- FA Package -->
-    <script src="https://kit.fontawesome.com/8accce40a8.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <?php
-    include('header.html');
-  ?>
-  <?php
-    include('body.html')
-  ?>
-  <footer> 
-  <?php
-    include('footer.html');
-    ?>
-  </footer>
-</body>
-
-<script src="./js/header.js"></script>
-</html>
+    $getPage = $_GET['page'];
+    // $getID = $_GET['id'];
+    if($getPage == 'home' or empty($getPage)) {
+        header("Location: home.php");
+    }
+    /*elseif($getPage == "products") {
+        header("Location: products.php");
+    }
+    elseif($getPage == "add-products") {
+        header("Location: add-products.php");
+    }
+    elseif($getPage == "product-view") {
+        header("Location: product-view.php?id=$getID");
+    }
+    elseif($getPage == "edit-products") {
+        header("Location: edit-products.php?id=$getID");
+    }
+    elseif($getPage == "delete-products") {
+        header("Location: delete-products.php?id=$getID");
+    }
+    */
+    elseif($getPage == "login") {
+        header("Location: login.php");
+    }
+    elseif($getPage == "register") {
+        header("Location: register.php");
+    }
+    elseif($getPage == "logout") {
+        header("Location: logout.php");
+    }
+    else {
+        header("Location: home.php");
+    }
+?>
