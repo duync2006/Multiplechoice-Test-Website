@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav left-side">
                     <li class="nav-item">
-                        <a class="home-icon nav-link" href="#"><i class="fa-solid fa-house"></i></a>
+                        <a class="home-icon nav-link" href="index.php?page=home"><i class="fa-solid fa-house"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="subnav nav-link" href="#" aria-expanded="false">
@@ -30,12 +30,28 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav right-side">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Sign up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Sign in</a>
-                    </li> 
+                    <?php
+                    if(isset($_SESSION["sess_user"])) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user me-2"></i><?= $user_name; ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=logout">Logout</a>
+                        </li> 
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=register">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=login">Sign in</a>
+                        </li> 
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
