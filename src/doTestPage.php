@@ -20,6 +20,8 @@
 
     <!-- FA Package -->
     <script src="https://kit.fontawesome.com/8accce40a8.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
 </head>
 <?php include "header.html"?>
 <body>
@@ -46,8 +48,12 @@
                     </div>
                 </div>
                 <div style="font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-                monospace" id="question">
-
+                monospace" id="question"></div>
+                <div class="col-sm-12 text-center mb-2">
+                    <button id="btnSubmit" type="hidden" name="submit" class="btn btn-warning"">Submit</button>
+                </div>
+                <div class="col-sm-12 text-center mb-2">
+                    <h4 id="score"></h4>
                 </div>
             </div>
         </div>
@@ -67,22 +73,59 @@
     </div>
 </body>
 <script type="text/javascript">
-
+    document.getElementById('btnSubmit').style.display = "none";
+    var questions;
     $('#btnStart').click(function()
     {
         $(this).hide();
         GetQuestions();
         GetShortcut();
+        $('#btnSubmit').show();
     })
     function GetQuestions()
     {
         $.ajax({
             url: 'questions.php',
             type: 'get',
-            success: function($data1){
-                // console.log($data2);
-                $('#question').html($data1);
-                // $('#shortcut_answer').html($data2);
+            success: function(data){
+                // console.log($data2)
+                questions = jQuery.parseJSON(data);
+                console.log(questions);
+                $index = 1;
+                $string = '';
+                $.each(questions, function (k,v) {
+                    $string+= '<div class="row" style="margin-left: 20px" id="question'+v['ID']+'">';
+                    $string+=  '<p id="'+v['ID']+'" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu '+$index+':</span> '+v['Content']+'</p>';
+                    $string+=  '<fieldset id="'+v['ID']+'">';
+                    $string+=     '<div class="form-check">';
+                    $string+=        ' <input class="Option_A" type="radio" name="'+v['ID']+'" value=""">';
+                    $string+=        ' <label class="A" class="form-check-label" for="$data = "><span class="text-danger">A: </span>';
+                    $string+=         v['Option_A'];
+                    $string+=         '</label>';
+                    $string+=     '</div>';
+                    $string+=     '<div class="form-check">';
+                    $string+=         '<input class="Option_B" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=        ' <label class="B" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">B: </span>';
+                    $string+=         v['Option_B'];
+                    $string+=         '</label>';
+                    $string+=     '</div>';
+                    $string+=     '<div class="form-check">';
+                    $string+=         '<input class="Option_C" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=        ' <label class="C" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">C: </span>';
+                    $string+=         v['Option_C'];
+                    $string+=         '</label>';
+                    $string+=     '</div>';
+                    $string+=     '<div class="form-check">';
+                    $string+=         '<input class="Option_D" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=        ' <label class="D" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">D: </span>';
+                    $string+=         v['Option_D'];
+                    $string+=         '</label>';
+                    $string+=     '</div>';
+                    $string+=    '</fieldset>';
+                    $string+=     '</div>';
+                    $index++;
+                })
+                $('#question').html($string);
             }
         })
     }
@@ -92,11 +135,57 @@
             url: 'shortcut.php',
             type: 'get',
             success: function($data2){
-                console.log($data2);
+                // console.log($data2);
                 $('#shortcut_answer').html($data2);
             }
         })
     };
+
+    $('#btnSubmit').click(function()
+    {
+        $(this).hide();
+        $('#btnStart').hide();
+        checkResult();
+    })
+    function checkResult(){
+        //Get the answer of questiosn
+        let score = 0;
+        $('#question div.row').each(function (k,v){
+            let id = $(v).find('p').attr('id');
+            let question = questions.find(x=>x.ID == id);
+            let answer = question['Answer']
+            console.log(answer);
+
+            //Get answer of user
+            let user = $(v).find('fieldset input[type="radio"]:checked').attr('class');
+            console.log(user);
+            let choice='';
+            switch (user){
+                case 'Option_A':
+                    choice = 'A'
+                    break;
+                case 'Option_B':
+                    choice = 'B'
+                    break;
+                case 'Option_C':
+                    choice = 'C'
+                    break;
+                case 'Option_D':
+                    choice = 'D'
+                    break;
+            }
+            if(choice == answer){
+                console.log("Question have id: "+id+" is correct.");
+                score+= 10;
+            }
+            else {
+                console.log("Question have id: "+id+" is not correct.");
+            }
+            console.log('#question > #question'+v['id']+' > fieldset > div > label.'+answer+'');
+            $('#question > #question'+id+' > fieldset > div > label.'+answer+'').css("background-color", "yellow");
+            $('#score').text('Your score is: '+score);
+        })
+    }
 </script>
 
 </html>
