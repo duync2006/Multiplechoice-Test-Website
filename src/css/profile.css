@@ -1,0 +1,19 @@
+/* .dashboard-menu {
+    background-color: lightgray;
+} */
+
+.dashboard-menu-item:hover {
+    background-color: lightblue;
+}
+
+a:hover {
+    font-weight: 700;
+}
+
+.performance {
+    width: 100px;
+}
+
+.pass {
+    display: block;
+}
