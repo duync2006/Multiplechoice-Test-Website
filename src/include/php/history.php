@@ -57,22 +57,22 @@
             <table class="table test-history mt-3">
                 <thead>
                     <tr>
-                        <th scope="col">Test name</th>
+                        <th scope="col" class="text-start">Test name</th>
                         <th scope="col">Score</th>
-                        <th scope="col">Date - Time</th>
+                        <th scope="col" class="text-end">Date - Time</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php for ($i = 0; $i < $count; $i++) : ?>
                         <tr>
-                            <td>
+                            <td class="text-start">
                                 <?php echo $test[$i]; ?>
                             </td>
                             <td>
                                 <?php echo $score[$i]; ?>
                             </td>
-                            <td>
+                            <td class="text-end">
                                 <?php echo $date[$i]; ?>
                             </td>
                         </tr>
