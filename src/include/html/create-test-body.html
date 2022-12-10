@@ -1,0 +1,59 @@
+<div class="page login-page">
+    <div class="container">
+        <h1>Create Test</h1>
+        <div class="<?php echo ($create_success == 1 ? 'text-success' : ''); ?> login-error text-center mb-4">
+            <?php echo $create_category_msg; ?>
+        </div>
+        <div class="login-box">
+            <form action="" method="post">
+                <div class="mb-4">
+                    <label class="form-label">Test name</label>
+                    <input type="text" name="test-name" class="form-control" placeholder="Please enter test name" required>
+                </div>
+
+                <div class="card shadow-sm p-2 mx-auto mb-5 bg-body border-start border-4 border-primary" style="--bs-border-opacity: .8">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <label class="form-label">Question</label>
+                            <input type="text" name="test-name" class="form-control" placeholder="Please enter question" required>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-2">
+                            <label for="formControlOptionA" class="form-label">Options</label>
+                            <input type="text" name="test-name" class="form-control" id="formControlOptionA" placeholder="Please enter option A" required>
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" name="test-name" class="form-control" id="formControlOptionB" placeholder="Please enter option B" required>
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" name="test-name" class="form-control" id="formControlOptionC" placeholder="Please enter option C (optional)">
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="text" name="test-name" class="form-control" id="formControlOptionD" placeholder="Please enter option D (optional)">
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <label for="formControlSelect" class="form-label">Answer</label>
+                            <select name="answer" id="formControlSelect" class="w-100" style="font-size: 20px;" required>
+                                <option value="">Select answer</option>
+                                <option value="A">Option A</option>
+                                <option value="B">Option B</option>
+                                <option value="C">Option C</option>
+                                <option value="D">Option D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+                <button class="login-btn create-category-btn mt-3" style="width: 100%" type="submit" name="create-test">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

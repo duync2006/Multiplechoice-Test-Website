@@ -19,19 +19,38 @@
                             <li><a class="subnav-item dropdown-item" href="#">Difficult tests</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Instructors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Contact</a>
-                    </li>
+                    <?php
+                    if($user_level != 1) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Instructors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                        </li>
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=create-test">Create Test</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=categories">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=create-category">Create Category</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
                 <ul class="navbar-nav right-side">
                     <?php
-                    if(isset($_SESSION["sess_user"])) {
+                    if($logged_in == true) {
                         ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user me-2"></i><?= $user_name; ?></a>

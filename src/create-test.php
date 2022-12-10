@@ -1,11 +1,11 @@
 <?php
   session_start();
   include('./include/php/session.php');
-  if($logged_in == true) {
+  if($user_level != 1) {
     header("Location: index.php?page=home");
   }
   else {
-    include('./include/php/login_processing.php');
+    include('./include/php/create-test_processing.php');
   }
 ?>
 
@@ -23,7 +23,7 @@
     include('./include/php/header.php');
   ?>
   <?php
-    include('./include/php/login-body.php')
+    include('./include/html/create-test-body.html')
   ?>
   <?php
     include('./include/html/footer.html');

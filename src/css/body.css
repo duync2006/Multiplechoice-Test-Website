@@ -15,6 +15,10 @@ code {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .section-caption {
   color: #284664;
   font-size: 20px;
@@ -40,6 +44,7 @@ code {
 
 .login-page {
   background-color: #f7f7f7;
+  overflow: hidden;
 }
 
 .login-page h1 {
@@ -108,6 +113,10 @@ code {
   margin-bottom: 40px;
 }
 
+.login-box .create-category-btn {
+  margin-bottom: 80px !important;
+}
+
 .login-box .login-btn:hover {
   opacity: 0.8;
   cursor: pointer;
@@ -130,4 +139,43 @@ code {
 
 .login-box .create-link a:hover {
   text-decoration: underline;
+}
+
+.display-section {
+  min-height: calc(100vh - 60px - 80px - 294px);
+  height: auto;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.display-section b {
+  font-size: 20px;
+  color: #284664;
+}
+
+.display-name {
+  font-size: 20px;
+  color: #284664;
+  text-align: left;
+}
+
+.display-option {
+  text-align: right;
+}
+
+.display-option i {
+  font-size: 20px;
+  line-height: 30px;
+  color: #284664;
+  margin-left: 16px;
+}
+
+.display-option i:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.display-section .search-empty {
+  color: #284664;
+  font-size: 20px;
 }

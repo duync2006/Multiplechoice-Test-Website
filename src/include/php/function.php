@@ -11,4 +11,12 @@
             return TRUE;
         }
     }
+
+    function getByID($table, $id) {
+        global $conn;
+        $sql = "SELECT * FROM $table WHERE ID='$id'";
+        $query = mysqli_query($conn, $sql);
+
+        return $query;
+    }
 ?>

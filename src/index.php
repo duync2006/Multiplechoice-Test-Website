@@ -2,26 +2,25 @@
     session_start();
 
     $getPage = $_GET['page'];
-    // $getID = $_GET['id'];
+    $getID = $_GET['id'];
     if($getPage == 'home' or empty($getPage)) {
         header("Location: home.php");
     }
-    /*elseif($getPage == "products") {
-        header("Location: products.php");
+    elseif($getPage == "create-test") {
+        header("Location: create-test.php");
     }
-    elseif($getPage == "add-products") {
-        header("Location: add-products.php");
+    elseif($getPage == "categories") {
+        header("Location: categories.php");
     }
-    elseif($getPage == "product-view") {
-        header("Location: product-view.php?id=$getID");
+    elseif($getPage == "create-category") {
+        header("Location: create-category.php");
     }
-    elseif($getPage == "edit-products") {
-        header("Location: edit-products.php?id=$getID");
+    elseif($getPage == "edit-category") {
+        header("Location: edit-category.php?id=$getID");
     }
-    elseif($getPage == "delete-products") {
-        header("Location: delete-products.php?id=$getID");
+    elseif($getPage == "delete-category") {
+        header("Location: delete-category.php?id=$getID");
     }
-    */
     elseif($getPage == "login") {
         header("Location: login.php");
     }

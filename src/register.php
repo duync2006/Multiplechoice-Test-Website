@@ -1,7 +1,7 @@
 <?php
   session_start();
   include('./include/php/session.php');
-  if(isset($_SESSION["sess_user"])) {
+  if($logged_in == true) {
     header("Location: index.php?page=home");
   }
   else {
@@ -26,11 +26,9 @@
   <?php
     include('./include/php/register-body.php')
   ?>
-  <footer> 
   <?php
     include('./include/html/footer.html');
   ?>
-  </footer>
 </body>
 
 <script src="./js/header.js"></script>

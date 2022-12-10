@@ -19,11 +19,9 @@
   <?php
     include('./include/html/body.html')
   ?>
-  <footer> 
   <?php
     include('./include/html/footer.html');
   ?>
-  </footer>
 </body>
 
 <script src="./js/header.js"></script>
