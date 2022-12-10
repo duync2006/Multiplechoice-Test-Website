@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/body.css">
+
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -22,6 +24,7 @@
     <script src="https://kit.fontawesome.com/8accce40a8.js" crossorigin="anonymous"></script>
 
     <!-- jQuery -->
+
 </head>
 <?php include "header.html"?>
 <body>
@@ -31,12 +34,6 @@
 
         </div>
         <div class="col-8">
-            <div class="panel-group">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Do Test</div>
-                    <div class="panel-body"></div>
-                </div>
-            </div>
             <div class="card mx-auto" style="width: 100%">
                 <div class="card-header">
                     <h1>Do test</h1>
@@ -49,15 +46,38 @@
                 </div>
                 <div style="font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
                 monospace" id="question"></div>
-                <div class="col-sm-12 text-center mb-2">
-                    <button id="btnSubmit" type="hidden" name="submit" class="btn btn-warning"">Submit</button>
+
+                <!-- Button trigger modal -->
+                <button id="btnSubmit" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Submit
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center" id="myModalLabel">Result</h4>
+                            </div>
+                            <div class="modal-body m-2" id="score">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-info" data-dismiss="modal">View Answer</button>
+                                <button type="button" class="btn btn-warning">Save changes</button>
+                                <button type="button" class="btn btn-success">Share</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12 text-center mb-2">
-                    <h4 id="score"></h4>
-                </div>
+                <script>$('#btnSubmit').click(function() {
+                        $('#myModal').modal('show');})</script>
+
             </div>
         </div>
-        <div class="col-3" id="shortcut_answer">
+        <div class="col-3" >
+            <div class="row" id="shortcut_answer"></div>
 <!--            <div class="card">-->
 <!--                <div class="card-header bg-info">-->
 <!--                    <h3>Test Name</h3>-->
@@ -68,10 +88,21 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
+            <div id="countdown">
+<!--            <div class="card mt-5">-->
+<!--                <div class="card-header bg-secondary">-->
+<!--                    <h3 id="demo"></h3>-->
+<!--                </div>-->
+<!--                <script src="js/countdown.js"></script>-->
+<!--            </div>-->
+            </div>
         </div>
     </div>
     </div>
+
+
 </body>
+
 <script type="text/javascript">
     document.getElementById('btnSubmit').style.display = "none";
     var questions;
@@ -81,7 +112,17 @@
         GetQuestions();
         GetShortcut();
         $('#btnSubmit').show();
+        GetCountdown();
     })
+    function GetCountdown(){
+        $.ajax({
+            url: 'countdown.php',
+            type: 'get',
+            success: function (data) {
+                $('#countdown').html(data);
+            }
+        })
+    }
     function GetQuestions()
     {
         $.ajax({
@@ -128,9 +169,6 @@
                 $('#question').html($string);
             }
         })
-    }
-    function GetShortcut()
-    {
         $.ajax({
             url: 'shortcut.php',
             type: 'get',
@@ -139,6 +177,10 @@
                 $('#shortcut_answer').html($data2);
             }
         })
+    }
+    function GetShortcut()
+    {
+
     };
 
     $('#btnSubmit').click(function()
@@ -183,7 +225,7 @@
             }
             console.log('#question > #question'+v['id']+' > fieldset > div > label.'+answer+'');
             $('#question > #question'+id+' > fieldset > div > label.'+answer+'').css("background-color", "yellow");
-            $('#score').text('Your score is: '+score);
+            $('#score').html('<h5>Your score is: '+score+'</h5>');
         })
     }
 </script>
