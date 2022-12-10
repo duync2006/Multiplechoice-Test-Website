@@ -3,7 +3,23 @@ $cate = array(
     // ID, C_Name
     array(1, 'Food'),
     array(2, 'Health'),
+    array(3, 'Business'),
+    array(4, 'Education'),
+    array(5, 'Technology'),
+    array(6, 'Sport'),
+    array(7, 'Town & Country'),
+    array(8, 'Travel'),
+    array(9, 'Work'),
+    array(10, 'Art'),
 );
+
+// * Difficulties:
+    // Beginner
+    // Elementary
+    // Intermediate
+    // Upper Intermediate
+    // Advanced
+    // Proficient
 
 $test = array(
     // ID, T_Name, Level
@@ -149,5 +165,14 @@ $ques = array(
             'large amount of money which is spent to make sure they have adequate health services', 'B',
             'debilitating', 'welfare state', 'consultant', 'active'),
 );
+
+// * Add history sample
+$his = array(
+    // U_ID, T_ID, Score, Date
+    array(2, 1, 9.75, '2022-11-04 03:04:05'),
+    array(2, 2, 8.5,  '2022-10-24 22:22:22'),
+    array(2, 3, 7.25, '2022-12-11 00:37:45'),
+    array(2, 4, 7,    '2022-10-03 13:00:00'),
+)
 
 ?>
