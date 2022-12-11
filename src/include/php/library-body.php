@@ -24,7 +24,8 @@
             <?php for ($i = 0; $i < $count; $i++) : ?>
                 <tr class="my-5">
                     <td class="tname fw-bold p-3">
-                        <a href="#" class="text-body"><?php echo $name[$i]; ?></a>
+                        <!-- <a href="#" class="text-body"><?php echo $name[$i]; ?></a> -->
+                        <?php echo "<a href='../../doTestPage.php?id=" . $tid[$i] . "' class='text-body'>" . $name[$i] . "</a>" ?>
                     </td>
 
                     <td class="text-muted p-3">
