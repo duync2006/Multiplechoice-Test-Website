@@ -12,6 +12,7 @@
                 <?php
                     if($user_level == 1) {
                         ?>
+                        <th class="p-3" scope="col">Edit</th>
                         <th class="p-3" scope="col">Delete</th>
                         <?php
                     }
@@ -107,6 +108,7 @@
                         if($user_level == 1) {
                             ?>
                             <td class="p-3">
+                            <a class="text-dark ms-3" href="index.php?page=edit-test&id=<?= $tid[$i]; ?>"><i class="fa-solid fa-xmark"></i></a>
                             <a class="text-dark ms-4" href="index.php?page=delete-test&id=<?= $tid[$i]; ?>"><i class="fa-solid fa-xmark"></i></a>
                             </td>
                             <?php
