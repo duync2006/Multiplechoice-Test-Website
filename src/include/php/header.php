@@ -53,7 +53,7 @@
                     if($logged_in == true) {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user me-2"></i><?= $user_name; ?></a>
+                            <a class="nav-link active" aria-current="page" href="index.php?page=profile"><i class="fa-solid fa-user me-2"></i><?= $user_name; ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php?page=logout">Logout</a>

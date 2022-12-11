@@ -1,9 +1,10 @@
 body {
-  font-family:"Montserrat", sans-serif;
+  /* font-family:"Montserrat", sans-serif; */
+  font-family: "Nunito", "Helvetica Neue", "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 500;
   margin: 0;
 }
-  
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -26,15 +27,15 @@ select {
 .section-caption {
   color: #284664;
   font-size: 20px;
-  font-weight:bold;
+  font-weight: bold;
   margin: 0px 0px 20px 0px;
   text-align: left;
-  
+
 }
 
 .reason {
   color: #284664;
-  font-weight:700;
+  font-weight: 700;
   min-height: 30px;
 }
 
@@ -228,4 +229,3 @@ select {
   background-color: #333 !important;
   color: #f7f7f7;
 }
-
