@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Create Test</h1>
         <div class="<?php echo ($create_success == 1 ? 'text-success' : ''); ?> login-error text-center mb-4">
-            <?php echo $create_category_msg; ?>
+            <?php echo $create_test_msg; ?>
         </div>
         <div class="login-box">
             <form action="" method="post">
@@ -100,11 +100,11 @@
                     </div>
                 </div>
 
-                <div class="border border-1 shadow-sm bg-body my-3" style="width: 100%" name="add-question" id="add-question-btn"><i class="fa-solid fa-plus"></i></div>
+                <div class="border border-1 shadow-sm bg-body mt-3 mb-4" style="width: 100%" name="add-question" id="add-question-btn"><i class="fa-solid fa-plus"></i></div>
     
                 <hr>
 
-                <button class="login-btn create-category-btn mmt-3" style="width: 100%" type="submit" name="create-test">Create test</button>
+                <button class="login-btn create-category-btn mt-4" style="width: 100%" type="submit" name="create-test">Create test</button>
             </form>
         </div>
     </div>
