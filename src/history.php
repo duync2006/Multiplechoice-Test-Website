@@ -10,10 +10,10 @@
         <h1 class="h2">Your Test History</h1>
 
         <!-- Test history -->
-        <div class="border rounded mt-3 p-3 text-center">
+        <div class="mt-3 p-3 text-center">
 
             <?php
-            include('average-score.php');
+            include('include/php/average-score.php');
 
             $sql = "SELECT T_ID, Score, Date
                     FROM User_Test
