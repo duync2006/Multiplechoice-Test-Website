@@ -106,7 +106,7 @@ else
 }
 
 // * Include data
-include('data.php');
+include('include/php/data.php');
 
 // * Insert into Category
 for ($i = 0; $i < sizeof($cate); $i++)

@@ -26,31 +26,30 @@
             ?>
                 <p class="h3 text-primary fw-bold pt-3">You haven't taken any test yet</p>
                 <p class="text-muted">How about give it a try?</p>
-                <a href="#" class="btn btn-dark p-3">Take a free test</a>
-            <?php
-            else:
+                <a href="../../library.php" class="btn btn-dark p-3">Take a free test</a>
 
-            // * Get results
-            while ($row = $res->fetch_assoc())
-            {
-                $test_id[] = $row['T_ID'];
-                $score[] = $row['Score'];
-                $date[] = $row['Date'];
-            }
-            $count = count($test_id);
-
-            for ($i = 0; $i < $count; $i++)
-            {
-                $sql = "SELECT T_Name
-                        FROM Test
-                        WHERE ID = '$test_id[$i]'";
-                $res = $conn->query($sql);
-
+            <?php else:
+                // * Get results
                 while ($row = $res->fetch_assoc())
                 {
-                    $test[] = $row['T_Name'];
+                    $test_id[] = $row['T_ID'];
+                    $score[] = $row['Score'];
+                    $date[] = $row['Date'];
                 }
-            }
+                $count = count($test_id);
+
+                for ($i = 0; $i < $count; $i++)
+                {
+                    $sql = "SELECT T_Name
+                            FROM Test
+                            WHERE ID = '$test_id[$i]'";
+                    $res = $conn->query($sql);
+
+                    while ($row = $res->fetch_assoc())
+                    {
+                        $test[] = $row['T_Name'];
+                    }
+                }
             ?>
 
             <!-- Test History -->

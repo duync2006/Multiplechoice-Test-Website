@@ -10,7 +10,7 @@
                         <a class="home-icon nav-link" href="index.php?page=home"><i class="fa-solid fa-house"></i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="subnav nav-link" href="#" aria-expanded="false">
+                        <a class="subnav nav-link" href="../../library.php" aria-expanded="false">
                             Test Library<i class="subnav-toggler fa-solid fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
