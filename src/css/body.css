@@ -47,6 +47,11 @@ select {
   background-color: aliceblue;
 }
 
+.library-page {
+  min-height: calc(100vh - 60px - 326px);
+  height: auto;
+}
+
 .login-page {
   background-color: #f7f7f7;
   overflow: hidden;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/include/php/session.php";
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available for this category. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available for this category. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -85,7 +85,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available for this level. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available for this level. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -109,7 +109,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -158,4 +158,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
     ?>
 </body>
 
+<script src="./js/header.js"></script>
 </html>

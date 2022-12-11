@@ -7,7 +7,7 @@
 
 <body>
     <!-- * Display library -->
-    <div class="container pb-3">
+    <div class="container pb-3 library-page">
         <table class="table table-hover align-middle caption-top mt-3">
             <caption>List of tests</caption>
 
@@ -16,6 +16,14 @@
                     <th class="p-3" scope="col">Test name</th>
                     <th class="p-3" scope="col">Categories</th>
                     <th class="p-3" scope="col">Difficulty</th>
+
+                    <?php
+                        if($user_level == 1) {
+                            ?>
+                            <th class="p-3" scope="col">Delete</th>
+                            <?php
+                        }
+                    ?>
                     <!-- <th class="text-end p-3" scope="col">Start test</th> -->
                 </tr>
             </thead>
@@ -88,20 +96,30 @@
 
                         <td class="p-3">
                             <?php
-                            if ($level[$i] == 0)
+                            if ($level[$i] == 1)
                                 echo "Beginner";
-                            elseif ($level[$i] == 1)
-                                echo "Elementary";
                             elseif ($level[$i] == 2)
-                                echo "Intermediate";
+                                echo "Elementary";
                             elseif ($level[$i] == 3)
-                                echo "Upper Intermediate";
+                                echo "Intermediate";
                             elseif ($level[$i] == 4)
+                                echo "Upper Intermediate";
+                            elseif ($level[$i] == 5)
                                 echo "Advanced";
                             else
                                 echo "Proficient";
                             ?>
                         </td>
+
+                        <?php
+                            if($user_level == 1) {
+                                ?>
+                                <td class="p-3">
+                                <a class="text-dark text-center" href="index.php?page=delete-test&id=<?= $tid[$i]; ?>"><i class="fa-solid fa-xmark"></i></a>
+                                </td>
+                                <?php
+                            }
+                        ?>
 
                         <!-- Start test button -->
                         <!-- <td class="text-end"> -->
