@@ -5,15 +5,21 @@
         <div class="d-sm-flex align-items-center justify-content-between">
             <div class="mx-5">
                 <h1> WE TAKE YOUR <br> <span class="text-warning">MULTIPLE-CHOICE TEST</span> <br> HIGHER</h1>
-                <p class="lead my-4">Get ready for your 2022 exam by practicing our 100+ mock tests for ALL COURSE </p>
-                <button class="btn btn-primary btn-lg">Start The Enrollment</button>
+                <p class="lead my-4">Get ready for your 2023 exam by practicing our 100+ mock tests for ENGLISH </p>
+            
+                <?php if (!$user_check): ?>
+                    <a href="../../login.php" class="btn btn-primary btn-lg">Start Now</a>
+                <?php else: ?>
+                    <a href="../../library.php" class="btn btn-primary btn-lg">Start Now</a>
+                <?php endif; ?>
+
             </div>
             <img class="img-fluid w-50 d-none d-sm-block " src="img/test-svgrepo-com.svg" alt="">
         </div>
     </div>
 </section>
 
-<section class="bg-info text-light p-5">
+<!-- <section class="bg-info text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
             <h3 class="mb-3 mb-md-0 ">Sign up for become Our Member</h3>
@@ -23,7 +29,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!--BOX-->
 <section class="p-5">
