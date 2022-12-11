@@ -11,6 +11,43 @@
                     <input type="text" name="test-name" class="form-control" placeholder="Please enter test name" required>
                 </div>
 
+                <hr>
+
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <label class="form-label">Category</label>
+                        <?php
+                            $categories = getAll('Category');
+
+                            if(mysqli_num_rows($categories) > 0) {
+                                foreach($categories as $category) {
+                                    ?>
+                                    <input type="checkbox" id="category<?= $category['ID']; ?>" name="category[]" value="<?= $category['ID']; ?>">
+                                    <label for="category<?= $category['ID']; ?>"><?= $category['Name']; ?></label><br>
+                                    <?php
+                                }
+                            }
+                            else {
+                                echo "<b>No categories have been created!</b>";
+                            }
+                        ?>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Difficulty</label>
+                        <select name="test-difficulty" class="w-100">
+                            <option value="">Select difficulty</option>
+                            <option value="1">Beginner</option>
+                            <option value="2">Elementary</option>
+                            <option value="3">Intermediate</option>
+                            <option value="4">Upper Intermediate</option>
+                            <option value="5">Advanced</option>
+                            <option value="6">Proficient</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr>
+
                 <div class="card shadow-sm p-2 mx-auto mb-5 bg-body question-card" style="--bs-border-opacity: .8">
                     <div class="card-body">
                         <div class="mb-4">

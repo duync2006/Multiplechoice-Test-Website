@@ -19,4 +19,12 @@
 
         return $query;
     }
+
+    function getAll($table) {
+        global $conn;
+        $sql = "SELECT * FROM $table ORDER by Name";
+        $query = mysqli_query($conn, $sql);
+
+        return $query;
+    }
 ?>

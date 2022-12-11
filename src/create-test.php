@@ -5,6 +5,7 @@
     header("Location: index.php?page=home");
   }
   else {
+    include('./include/php/function.php');
     include('./include/php/create-test_processing.php');
   }
 ?>
@@ -23,7 +24,7 @@
     include('./include/php/header.php');
   ?>
   <?php
-    include('./include/html/create-test-body.html')
+    include('./include/php/create-test-body.php')
   ?>
   <?php
     include('./include/html/footer.html');
