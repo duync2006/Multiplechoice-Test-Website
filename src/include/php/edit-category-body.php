@@ -9,7 +9,7 @@
                 <div class="mb-5">
                     <input type="hidden" name="category-id" value="<?= $category_item['ID'] ?>">
                     <label for="formControlCategory" class="form-label">Category name</label>
-                    <input type="text" name="category-name" class="form-control" id="formControlCategory" value="<?= $category_item['Name'] ?>">
+                    <input type="text" name="category-name" class="form-control" id="formControlCategory" value="<?= $category_item['C_Name'] ?>">
                 </div>
     
                 <button class="login-btn create-category-btn" type="submit" name="edit-category">Confirm</button>

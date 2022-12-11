@@ -16,6 +16,7 @@
                 <div class="row mb-4">
                     <div class="col-6">
                         <label class="form-label">Category</label>
+                        <br>
                         <?php
                             $categories = getAll('Category');
 
@@ -23,7 +24,7 @@
                                 foreach($categories as $category) {
                                     ?>
                                     <input type="checkbox" id="category<?= $category['ID']; ?>" name="category[]" value="<?= $category['ID']; ?>">
-                                    <label for="category<?= $category['ID']; ?>"><?= $category['Name']; ?></label><br>
+                                    <label for="category<?= $category['ID']; ?>"><?= $category['C_Name']; ?></label><br>
                                     <?php
                                 }
                             }
@@ -34,7 +35,7 @@
                     </div>
                     <div class="col-6">
                         <label class="form-label">Difficulty</label>
-                        <select name="test-difficulty" class="w-100">
+                        <select name="test-difficulty" class="w-100" required>
                             <option value="">Select difficulty</option>
                             <option value="1">Beginner</option>
                             <option value="2">Elementary</option>
@@ -99,9 +100,11 @@
                     </div>
                 </div>
 
-                <div class="border border-1 shadow-sm bg-body mt-3 mb-5" style="width: 100%" name="add-question" id="add-question-btn"><i class="fa-solid fa-plus"></i></div>
+                <div class="border border-1 shadow-sm bg-body my-3" style="width: 100%" name="add-question" id="add-question-btn"><i class="fa-solid fa-plus"></i></div>
     
-                <button class="login-btn create-category-btn mt-3" style="width: 100%" type="submit" name="create-test">Create test</button>
+                <hr>
+
+                <button class="login-btn create-category-btn mmt-3" style="width: 100%" type="submit" name="create-test">Create test</button>
             </form>
         </div>
     </div>

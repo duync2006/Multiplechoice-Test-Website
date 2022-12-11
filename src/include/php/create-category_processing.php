@@ -3,11 +3,11 @@
 if(isset($_POST['create-category'])) {
     $name = $_POST['category-name'];
 
-    $query = mysqli_query($conn, "SELECT * FROM Category WHERE Name = '$name'");
+    $query = mysqli_query($conn, "SELECT * FROM Category WHERE C_Name = '$name'");
     $numrows = mysqli_num_rows($query);
 
     if($numrows == 0) {
-        $sql = "INSERT INTO Category (Name) VALUES ('$name')";
+        $sql = "INSERT INTO Category (C_Name) VALUES ('$name')";
         if(mysqli_query($conn, $sql)) {
             $create_category_msg = "Category is created!";
             $create_success = 1;
@@ -26,7 +26,7 @@ elseif(isset($_POST['edit-category'])) {
     $id = $_POST['category-id'];
     $name = $_POST['category-name'];
 
-    $sql = "UPDATE Category SET Name='$name' WHERE ID='$id'";
+    $sql = "UPDATE Category SET C_Name='$name' WHERE ID='$id'";
     if(mysqli_query($conn, $sql)) {
         $edit_category_msg = "Category is updated!";
         $edit_success = 1;

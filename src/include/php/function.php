@@ -22,7 +22,7 @@
 
     function getAll($table) {
         global $conn;
-        $sql = "SELECT * FROM $table ORDER by Name";
+        $sql = "SELECT * FROM $table";
         $query = mysqli_query($conn, $sql);
 
         return $query;

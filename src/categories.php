@@ -49,7 +49,7 @@
 
                     html += '<div class="col-6 display-name">';
 
-                    html += response[count].Name;
+                    html += response[count].C_Name;
 
                     html += '</div>'
 
