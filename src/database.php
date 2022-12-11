@@ -35,7 +35,7 @@ else
 $newConn->close();
 
 // * Connect database
-include('config.php');
+include('include/php/config.php');
 
 // * Create User table
 $sql = "CREATE TABLE User (

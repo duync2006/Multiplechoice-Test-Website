@@ -27,6 +27,7 @@ $test = array(
     array(2, 'Food - Gap fill', 4),
     array(3, 'Health - Proficient', 6),
     array(4, 'Health - Intermediate', 3),
+    array(5, 'Grammar', 4),
 );
 
 $test_cate = array(
@@ -35,6 +36,9 @@ $test_cate = array(
     array(1, 2),
     array(2, 3),
     array(2, 4),
+    array(3, 5),
+    array(5, 5),
+    array(10, 5),
 );
 
 $ques = array(
@@ -164,6 +168,9 @@ $ques = array(
     array(4,
             'large amount of money which is spent to make sure they have adequate health services', 'B',
             'debilitating', 'welfare state', 'consultant', 'active'),
+    array(4, 
+            'This is the sample question', 'A',
+            'A', 'B', 'C'),
 );
 
 // * Add history sample
