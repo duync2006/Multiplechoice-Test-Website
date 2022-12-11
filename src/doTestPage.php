@@ -4,6 +4,7 @@ $_SESSION["testID"] = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
 
@@ -32,145 +33,148 @@ $_SESSION["testID"] = $_GET['id'];
 </head>
 
 <body>
-    <?php include('include/html/footer.html');?>
-    
-    <div class="container">
-    <div class="row">
-        <div class="col-1">
+    <?php include('include/php/header.php'); ?>
 
-        </div>
-        <div class="col-8">
-            <div class="card mx-auto" style="width: 100%">
-                <div class="card-header">
-                    <h1>Do test</h1>
-                </div>
-                <div class="card-body">
-                    <h4>You have 50 minutes to do! </h4>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button style="width: 100px" class="btn btn-success me-md-2" type="button" id="btnStart">Start</button>
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-8">
+                <div class="card mx-auto" style="width: 100%">
+                    <div class="card-header">
+                        <h1>Do test</h1>
                     </div>
-                </div>
-                <div style="font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+                    <div class="card-body">
+                        <h4>You have 50 minutes to do! </h4>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button style="width: 100px" class="btn btn-success me-md-2" type="button" id="btnStart">Start</button>
+                        </div>
+                    </div>
+                    <div style="font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
                 monospace" id="question"></div>
 
-                <!-- Button trigger modal -->
-                <button id="btnSubmit" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    Submit
-                </button>
+                    <!-- Button trigger modal -->
+                    <button id="btnSubmit" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        Submit
+                    </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title text-center" id="myModalLabel">Result</h4>
-                            </div>
-                            <div class="modal-body m-2" id="score">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-center" id="myModalLabel">Result</h4>
+                                </div>
+                                <div class="modal-body m-2" id="score">
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-info" data-dismiss="modal">View Answer</button>
-                                <button id="saveButton" type="button" class="btn btn-warning">Save changes</button>
-                                <button type="button" class="btn btn-success">Share</button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">View Answer</button>
+                                    <button id="saveButton" type="button" class="btn btn-warning">Save changes</button>
+                                    <button type="button" class="btn btn-success">Share</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        $('#btnSubmit').click(function() {
+                            $('#myModal').modal('show');
+                        })
+                    </script>
+
                 </div>
-                <script>$('#btnSubmit').click(function() {
-                        $('#myModal').modal('show');})</script>
-
             </div>
-        </div>
-        <div class="col-3" >
-            <div class="row" id="shortcut_answer"></div>
-<!--            <div class="card">-->
-<!--                <div class="card-header bg-info">-->
-<!--                    <h3>Test Name</h3>-->
-<!--                </div>-->
-<!--                <div class="row">-->
-<!--                    <div class="col-2 m-2">-->
-<!--                    <button type="button" class="btn btn-outline-dark">1</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-            <div id="countdown">
-<!--            <div class="card mt-5">-->
-<!--                <div class="card-header bg-secondary">-->
-<!--                    <h3 id="demo"></h3>-->
-<!--                </div>-->
-<!--                <script src="js/countdown.js"></script>-->
-<!--            </div>-->
+            <div class="col-3">
+                <div class="row" id="shortcut_answer"></div>
+                <!--            <div class="card">-->
+                <!--                <div class="card-header bg-info">-->
+                <!--                    <h3>Test Name</h3>-->
+                <!--                </div>-->
+                <!--                <div class="row">-->
+                <!--                    <div class="col-2 m-2">-->
+                <!--                    <button type="button" class="btn btn-outline-dark">1</button>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <div id="countdown">
+                    <!--            <div class="card mt-5">-->
+                    <!--                <div class="card-header bg-secondary">-->
+                    <!--                    <h3 id="demo"></h3>-->
+                    <!--                </div>-->
+                    <!--                <script src="js/countdown.js"></script>-->
+                    <!--            </div>-->
+                </div>
             </div>
         </div>
     </div>
-    </div>
 
-
+    <?php include('include/html/footer.html'); ?>
 </body>
 
 <script type="text/javascript">
     document.getElementById('btnSubmit').style.display = "none";
     var questions;
-   let score = 0;
-    $('#btnStart').click(function()
-    {
+    let score = 0;
+    $('#btnStart').click(function() {
         $(this).hide();
         GetQuestions();
         $('#btnSubmit').show();
         GetCountdown();
     })
-    function GetCountdown(){
+
+    function GetCountdown() {
         $.ajax({
             url: 'countdown.php',
             type: 'get',
-            success: function (data) {
+            success: function(data) {
                 $('#countdown').html(data);
             }
         })
     }
-    function GetQuestions()
-    {
+
+    function GetQuestions() {
 
         $.ajax({
             url: 'questions.php',
             type: 'get',
-            success: function(data){
+            success: function(data) {
                 // console.log($data2)
                 questions = jQuery.parseJSON(data);
                 console.log(questions);
                 $index = 1;
                 $string = '';
-                $.each(questions, function (k,v) {
-                    $string+= '<div class="row" style="margin-left: 20px" id="question'+v['ID']+'">';
-                    $string+=  '<p id="'+v['ID']+'" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu '+$index+':</span> '+v['Content']+'</p>';
-                    $string+=  '<fieldset id="'+v['ID']+'">';
-                    $string+=     '<div class="form-check">';
-                    $string+=        ' <input id = "A'+$index+'" class="Option_A" type="radio" name="'+$index+'" value=""">';
-                    $string+=        ' <label class="A" class="form-check-label" for="$data = "><span class="text-danger">A: </span>';
-                    $string+=         v['Option_A'];
-                    $string+=         '</label>';
-                    $string+=     '</div>';
-                    $string+=     '<div class="form-check">';
-                    $string+=         '<input id = "B'+$index+'" ass="Option_B" type="radio" name="'+$index+'" value="">';
-                    $string+=        ' <label class="B" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">B: </span>';
-                    $string+=         v['Option_B'];
-                    $string+=         '</label>';
-                    $string+=     '</div>';
-                    $string+=     '<div class="form-check">';
-                    $string+=         '<input id = "C'+$index+'"  class="Option_C" type="radio" name="'+$index+'" value="">';
-                    $string+=        ' <label class="C" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">C: </span>';
-                    $string+=         v['Option_C'];
-                    $string+=         '</label>';
-                    $string+=     '</div>';
-                    $string+=     '<div class="form-check">';
-                    $string+=         '<input id = "D'+$index+'" class="Option_D" type="radio" name="'+$index+'" value="">';
-                    $string+=        ' <label class="D" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">D: </span>';
-                    $string+=         v['Option_D'];
-                    $string+=         '</label>';
-                    $string+=     '</div>';
-                    $string+=    '</fieldset>';
-                    $string+=     '</div>';
+                $.each(questions, function(k, v) {
+                    $string += '<div class="row" style="margin-left: 20px" id="question' + v['ID'] + '">';
+                    $string += '<p id="' + v['ID'] + '" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu ' + $index + ':</span> ' + v['Content'] + '</p>';
+                    $string += '<fieldset id="' + v['ID'] + '">';
+                    $string += '<div class="form-check">';
+                    $string += ' <input id = "A' + $index + '" class="Option_A" type="radio" name="' + $index + '" value=""">';
+                    $string += ' <label class="A" class="form-check-label" for="$data = "><span class="text-danger">A: </span>';
+                    $string += v['Option_A'];
+                    $string += '</label>';
+                    $string += '</div>';
+                    $string += '<div class="form-check">';
+                    $string += '<input id = "B' + $index + '" class="Option_B" type="radio" name="' + $index + '" value="">';
+                    $string += ' <label class="B" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">B: </span>';
+                    $string += v['Option_B'];
+                    $string += '</label>';
+                    $string += '</div>';
+                    $string += '<div class="form-check">';
+                    $string += '<input id = "C' + $index + '"  class="Option_C" type="radio" name="' + $index + '" value="">';
+                    $string += ' <label class="C" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">C: </span>';
+                    $string += v['Option_C'];
+                    $string += '</label>';
+                    $string += '</div>';
+                    $string += '<div class="form-check">';
+                    $string += '<input id = "D' + $index + '" class="Option_D" type="radio" name="' + $index + '" value="">';
+                    $string += ' <label class="D" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">D: </span>';
+                    $string += v['Option_D'];
+                    $string += '</label>';
+                    $string += '</div>';
+                    $string += '</fieldset>';
+                    $string += '</div>';
                     $index++;
                 })
                 $('#question').html($string);
@@ -179,33 +183,33 @@ $_SESSION["testID"] = $_GET['id'];
         $.ajax({
             url: 'shortcut.php',
             type: 'get',
-            success: function($data2){
+            success: function($data2) {
                 // console.log($data2);
                 $('#shortcut_answer').html($data2);
             }
         })
     }
-    $('#btnSubmit').click(function()
-    {
+    $('#btnSubmit').click(function() {
         $(this).hide();
         $('#btnStart').hide();
         checkResult();
     })
-    function checkResult(){
+
+    function checkResult() {
         //Get the answer of questiosn
         let score = 0;
         let index = 0;
-        $('#question div.row').each(function (k,v){
+        $('#question div.row').each(function(k, v) {
             let id = $(v).find('p').attr('id');
-            let question = questions.find(x=>x.ID == id);
+            let question = questions.find(x => x.ID == id);
             let answer = question['Answer']
             console.log(answer);
 
             //Get answer of user
             let user = $(v).find('fieldset input[type="radio"]:checked').attr('class');
             console.log(user);
-            let choice='';
-            switch (user){
+            let choice = '';
+            switch (user) {
                 case 'Option_A':
                     choice = 'A'
                     break;
@@ -219,24 +223,23 @@ $_SESSION["testID"] = $_GET['id'];
                     choice = 'D'
                     break;
             }
-            if(choice == answer){
-                console.log("Question have id: "+id+" is correct.");
-                score+= 10;
+            if (choice == answer) {
+                console.log("Question have id: " + id + " is correct.");
+                score += 10;
+            } else {
+                console.log("Question have id: " + id + " is not correct.");
             }
-            else {
-                console.log("Question have id: "+id+" is not correct.");
-            }
-            console.log('#question > #question'+v['id']+' > fieldset > div > label.'+answer+'');
-            $('#question > #question'+id+' > fieldset > div > label.'+answer+'').css("background-color", "yellow");
-            $('#score').html('<h5>Your score is: '+score+'</h5>');
+            console.log('#question > #question' + v['id'] + ' > fieldset > div > label.' + answer + '');
+            $('#question > #question' + id + ' > fieldset > div > label.' + answer + '').css("background-color", "yellow");
+            $('#score').html('<h5>Your score is: ' + score + '</h5>');
 
         })
-        $('#saveButton').click(function(){
+        $('#saveButton').click(function() {
             $.ajax({
                 type: "POST",
                 url: "saveResult.php",
                 data: "score=" + score,
-                success: function(data){
+                success: function(data) {
                     alert("Saving success");
                 }
             });
