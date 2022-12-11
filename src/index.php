@@ -1,38 +1,26 @@
-<!DOCTYPE html>
-<html>
+<?php
+    session_start();
 
-<head>
-    <meta charset="utf-8">
+    $getPage = $_GET['page'];
+    $getID = $_GET['id'];
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/body.css">
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Icon Package -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- FA Package -->
-    <script src="https://kit.fontawesome.com/8accce40a8.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <?php
-    include('header.html');
-  ?>
-  <?php
-    include('body.html')
-  ?>
-  <footer> 
-  <?php
-    include('footer.html');
-    ?>
-  </footer>
-</body>
-
-<script src="./js/header.js"></script>
-</html>
+    if(empty($getPage)) 
+    {
+        header("Location: home.php");
+    }
+    /*elseif($getPage == "edit-category") {
+        header("Location: edit-category.php?id=$getID");
+    }
+    elseif($getPage == "delete-category") {
+        header("Location: delete-category.php?id=$getID");
+    }*/
+    else
+    {
+        if(!empty($getID)) {
+            header("Location: " . $getPage . ".php?id=$getID");
+        }
+        else {
+            header("Location: " . $getPage . ".php");
+        }
+    }
+?>

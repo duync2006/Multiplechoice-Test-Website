@@ -51,6 +51,7 @@ code {
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
+    transition: all ease 0.2s;
 }
 
 #nav .right-side > li:hover > a {
