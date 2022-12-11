@@ -16,7 +16,7 @@
     }*/
     else
     {
-        if($getID) {
+        if(!empty($getID)) {
             header("Location: " . $getPage . ".php?id=$getID");
         }
         else {

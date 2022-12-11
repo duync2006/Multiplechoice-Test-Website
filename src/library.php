@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/include/php/session.php";
+include('include/php/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/session.php";
 
     <?php
     include('include/php/head.php');
-    include('include/php/session.php');
     ?>
 </head>
 
