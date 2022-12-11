@@ -30,8 +30,9 @@ $_SESSION["testID"] = $_GET['id'];
     <!-- jQuery -->
 
 </head>
-<?php include "header.html"?>
 <body>
+    <?php include('include/html/footer.html');?>
+    
     <div class="container">
     <div class="row">
         <div class="col-1">
@@ -104,7 +105,7 @@ $_SESSION["testID"] = $_GET['id'];
     </div>
     </div>
 
-
+    <?php include('include/php/footer.php'); ?>
 </body>
 
 <script type="text/javascript">
