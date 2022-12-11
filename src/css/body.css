@@ -161,7 +161,6 @@ select {
 .display-name {
   font-size: 20px;
   color: #284664;
-  text-align: left;
 }
 
 .display-option {
@@ -172,7 +171,7 @@ select {
   font-size: 20px;
   line-height: 30px;
   color: #284664;
-  margin-left: 16px;
+  margin-left: 40px;
 }
 
 .display-option i:hover {

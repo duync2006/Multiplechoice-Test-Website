@@ -42,24 +42,34 @@
 
                 var html = '';
 
+                var user_level = <?php echo $user_level; ?>;
+
                 for(var count = 0; count < response.length; count++) {
                     html += '<div class="card shadow-sm p-3 mx-auto mb-4 bg-body rounded" style="width: 60vw">';
 
                     html += '<div class="card-body row">';
 
-                    html += '<div class="col-6 display-name">';
+                    html += '<div class="col-6 text-start">';
+
+                    html += '<a class="display-name" href="library.php?cateID=' + response[count].ID + '">';
 
                     html += response[count].C_Name;
 
-                    html += '</div>'
-
-                    html += '<div class="col-6 display-option">';
-
-                    html += '<a href="index.php?page=edit-category&id=' + response[count].ID + '"><i class="fa-solid fa-gear"></i></a>';
-
-                    html += '<a href="index.php?page=delete-category&id=' + response[count].ID + '"><i class="fa-solid fa-xmark"></i></a>';
+                    html += '</a>';
 
                     html += '</div>'
+
+                    if(user_level == 1) {
+
+                      html += '<div class="col-6 display-option">';
+
+                      html += '<a href="index.php?page=edit-category&id=' + response[count].ID + '"><i class="fa-solid fa-gear"></i></a>';
+
+                      html += '<a href="index.php?page=delete-category&id=' + response[count].ID + '"><i class="fa-solid fa-xmark"></i></a>';
+
+                      html += '</div>'
+
+                    }
 
                     html += '</div>';
 
