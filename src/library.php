@@ -93,7 +93,7 @@ include('include/php/session.php');
         {
             while ($row = $res->fetch_assoc())
             {
-                $tid = $row['ID'];
+                $tid[] = $row['ID'];
                 $name[] = $row['T_Name'];
                 $level[] = $row['Level'];
             }
