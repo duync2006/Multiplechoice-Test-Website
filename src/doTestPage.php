@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION["testID"] = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +69,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-info" data-dismiss="modal">View Answer</button>
-                                <button type="button" class="btn btn-warning">Save changes</button>
+                                <button id="saveButton" type="button" class="btn btn-warning">Save changes</button>
                                 <button type="button" class="btn btn-success">Share</button>
                             </div>
                         </div>
@@ -106,11 +110,11 @@
 <script type="text/javascript">
     document.getElementById('btnSubmit').style.display = "none";
     var questions;
+    var score;
     $('#btnStart').click(function()
     {
         $(this).hide();
         GetQuestions();
-        GetShortcut();
         $('#btnSubmit').show();
         GetCountdown();
     })
@@ -125,6 +129,7 @@
     }
     function GetQuestions()
     {
+
         $.ajax({
             url: 'questions.php',
             type: 'get',
@@ -139,25 +144,25 @@
                     $string+=  '<p id="'+v['ID']+'" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu '+$index+':</span> '+v['Content']+'</p>';
                     $string+=  '<fieldset id="'+v['ID']+'">';
                     $string+=     '<div class="form-check">';
-                    $string+=        ' <input class="Option_A" type="radio" name="'+v['ID']+'" value=""">';
+                    $string+=        ' <input class = "Answer" class="Option_A" type="radio" name="'+$index+'" value=""">';
                     $string+=        ' <label class="A" class="form-check-label" for="$data = "><span class="text-danger">A: </span>';
                     $string+=         v['Option_A'];
                     $string+=         '</label>';
                     $string+=     '</div>';
                     $string+=     '<div class="form-check">';
-                    $string+=         '<input class="Option_B" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=         '<input  class = "Answer" ass="Option_B" type="radio" name="'+$index+'" value="">';
                     $string+=        ' <label class="B" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">B: </span>';
                     $string+=         v['Option_B'];
                     $string+=         '</label>';
                     $string+=     '</div>';
                     $string+=     '<div class="form-check">';
-                    $string+=         '<input class="Option_C" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=         '<input class = "Answer"  class="Option_C" type="radio" name="'+$index+'" value="">';
                     $string+=        ' <label class="C" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">C: </span>';
                     $string+=         v['Option_C'];
                     $string+=         '</label>';
                     $string+=     '</div>';
                     $string+=     '<div class="form-check">';
-                    $string+=         '<input class="Option_D" type="radio" name="'+v['ID']+'" value="">';
+                    $string+=         '<input  class = "Answer" class="Option_D" type="radio" name="'+$index+'" value="">';
                     $string+=        ' <label class="D" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">D: </span>';
                     $string+=         v['Option_D'];
                     $string+=         '</label>';
@@ -178,11 +183,6 @@
             }
         })
     }
-    function GetShortcut()
-    {
-
-    };
-
     $('#btnSubmit').click(function()
     {
         $(this).hide();
@@ -200,7 +200,6 @@
 
             //Get answer of user
             let user = $(v).find('fieldset input[type="radio"]:checked').attr('class');
-            console.log(user);
             let choice='';
             switch (user){
                 case 'Option_A':
@@ -227,7 +226,20 @@
             $('#question > #question'+id+' > fieldset > div > label.'+answer+'').css("background-color", "yellow");
             $('#score').html('<h5>Your score is: '+score+'</h5>');
         })
+        $('#saveButton').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "saveResult.php",
+                data: "score=" + score,
+                success: function(data){
+                    alert("success!");
+                }
+            });
+        });
     }
+    // $("input.Answer").click(function (){
+    //   alert($(this).name);
+    // })
 </script>
 
 </html>
