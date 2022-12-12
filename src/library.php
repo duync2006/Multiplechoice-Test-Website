@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
+include('include/php/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
     <?php
     include('include/php/head.php');
-    include('include/php/session.php');
     ?>
 </head>
 
@@ -49,7 +48,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available for this category. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available for this category. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -85,7 +84,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available for this level. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available for this level. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -94,7 +93,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
         {
             while ($row = $res->fetch_assoc())
             {
-                $tid = $row['ID'];
+                $tid[] = $row['ID'];
                 $name[] = $row['T_Name'];
                 $level[] = $row['Level'];
             }
@@ -109,7 +108,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
 
         if ($res->num_rows == 0)
         {
-            echo "<p class='h3 text-primary text-center fw-bold py-3'>No tests available. Please visit again later.</p>";
+            echo "<div class='library-page'><p class='h3 text-primary text-center fw-bold py-3'>No tests available. Please visit again later.</p></div>";
 
             include('include/html/footer.html');
             exit();
@@ -157,5 +156,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/include/php/config.php";
     include('include/html/footer.html'); 
     ?>
 </body>
+
 
 </html>

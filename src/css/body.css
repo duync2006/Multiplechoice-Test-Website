@@ -16,6 +16,14 @@ code {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
+select {
+  font: inherit;
+}
+
 .section-caption {
   color: #284664;
   font-size: 20px;
@@ -39,8 +47,14 @@ code {
   background-color: aliceblue;
 }
 
+.library-page {
+  min-height: calc(100vh - 60px - 326px);
+  height: auto;
+}
+
 .login-page {
   background-color: #f7f7f7;
+  overflow: hidden;
 }
 
 .login-page h1 {
@@ -109,6 +123,10 @@ code {
   margin-bottom: 40px;
 }
 
+.login-box .create-category-btn {
+  margin-bottom: 80px !important;
+}
+
 .login-box .login-btn:hover {
   opacity: 0.8;
   cursor: pointer;
@@ -131,4 +149,87 @@ code {
 
 .login-box .create-link a:hover {
   text-decoration: underline;
+}
+
+.display-section {
+  min-height: calc(100vh - 60px - 80px - 294px);
+  height: auto;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.display-section b {
+  font-size: 20px;
+  color: #284664;
+}
+
+.display-name {
+  font-size: 20px;
+  color: #284664;
+}
+
+.display-option {
+  text-align: right;
+}
+
+.display-option i {
+  font-size: 20px;
+  line-height: 30px;
+  color: #284664;
+  margin-left: 40px;
+}
+
+.display-option i:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.display-section .search-empty {
+  color: #284664;
+  font-size: 20px;
+}
+
+.question-body {
+  display: none;
+}
+
+.active .question-body {
+  display: block !important;
+  transition: all ease 0.2s;
+}
+
+
+.delete-question {
+  color: #284664;
+  font-size: 20px;
+}
+
+.delete-question i {
+  padding: 12px 16px;
+}
+
+.delete-question i:hover {
+  background-color: #284664;
+  color: #f7f7f7;
+}
+
+#add-question-btn {
+  display: block;
+  min-width: 50vh;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  height: 40px;
+  line-height: 40px;
+  letter-spacing: 0.4px;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#add-question-btn:hover {
+  cursor: pointer;
+  background-color: #284664 !important;
+  color: #f7f7f7;
 }

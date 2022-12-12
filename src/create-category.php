@@ -1,12 +1,11 @@
 <?php
   session_start();
   include('./include/php/session.php');
-  if($logged_in == true) {
+  if($user_level != 1) {
     header("Location: index.php?page=home");
   }
   else {
-    include('./include/php/function.php');
-    include('./include/php/register_processing.php');
+    include('./include/php/create-category_processing.php');
   }
 ?>
 
@@ -24,7 +23,7 @@
     include('./include/php/header.php');
   ?>
   <?php
-    include('./include/php/register-body.php')
+    include('./include/php/create-category-body.php')
   ?>
   <?php
     include('./include/html/footer.html');

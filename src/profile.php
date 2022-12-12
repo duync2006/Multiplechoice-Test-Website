@@ -57,7 +57,7 @@ if (!isset($_SESSION['sess_user']))
                 <div class="col-sm-12 col-md-8 col-right h-auto">
                     <h1 class="h2">My Profile</h1>
 
-                    <?php include('include/php/average-score.php') ?>
+                    <?php include('include/php/average-score.php'); ?>
 
                     <!-- User's info -->
                     <div class="row border rounded mt-3">
@@ -91,7 +91,7 @@ if (!isset($_SESSION['sess_user']))
             <?php
             // * History
             elseif ($page == 'history') :
-                include('include/php/history.php');
+                include('history.php');
             endif; 
             ?>
         </div>

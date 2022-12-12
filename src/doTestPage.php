@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION["testID"] = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -105,16 +109,17 @@
         </div>
     </div>
 
-
+    <?php include('include/html/footer.html'); ?>
 </body>
 
 <script type="text/javascript">
     document.getElementById('btnSubmit').style.display = "none";
     var questions;
+    let score = 0;
     $('#btnStart').click(function() {
         $(this).hide();
         GetQuestions();
-        document.getElementById('btnSubmit').style.display = "block";
+        $('#btnSubmit').show();
         GetCountdown();
     })
 
@@ -143,25 +148,25 @@
                     $string += '<p id="' + v['ID'] + '" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu ' + $index + ':</span> ' + v['Content'] + '</p>';
                     $string += '<fieldset id="' + v['ID'] + '">';
                     $string += '<div class="form-check">';
-                    $string += ' <input class="Option_A" type="radio" name="' + v['ID'] + '" value=""">';
+                    $string += ' <input id = "A' + $index + '" class="Option_A" type="radio" name="' + $index + '" value=""">';
                     $string += ' <label class="A" class="form-check-label" for="$data = "><span class="text-danger">A: </span>';
                     $string += v['Option_A'];
                     $string += '</label>';
                     $string += '</div>';
                     $string += '<div class="form-check">';
-                    $string += '<input class="Option_B" type="radio" name="' + v['ID'] + '" value="">';
+                    $string += '<input id = "B' + $index + '" class="Option_B" type="radio" name="' + $index + '" value="">';
                     $string += ' <label class="B" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">B: </span>';
                     $string += v['Option_B'];
                     $string += '</label>';
                     $string += '</div>';
                     $string += '<div class="form-check">';
-                    $string += '<input class="Option_C" type="radio" name="' + v['ID'] + '" value="">';
+                    $string += '<input id = "C' + $index + '"  class="Option_C" type="radio" name="' + $index + '" value="">';
                     $string += ' <label class="C" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">C: </span>';
                     $string += v['Option_C'];
                     $string += '</label>';
                     $string += '</div>';
                     $string += '<div class="form-check">';
-                    $string += '<input class="Option_D" type="radio" name="' + v['ID'] + '" value="">';
+                    $string += '<input id = "D' + $index + '" class="Option_D" type="radio" name="' + $index + '" value="">';
                     $string += ' <label class="D" class="form-check-label" for="QuestionB"><span class="text-danger" style="font-weight: bold">D: </span>';
                     $string += v['Option_D'];
                     $string += '</label>';
@@ -177,6 +182,7 @@
             url: 'shortcut.php',
             type: 'get',
             success: function($data2) {
+                // console.log($data2);
                 $('#shortcut_answer').html($data2);
             }
         })
@@ -190,6 +196,7 @@
     function checkResult() {
         //Get the answer of questiosn
         let score = 0;
+        let index = 0;
         $('#question div.row').each(function(k, v) {
             let id = $(v).find('p').attr('id');
             let question = questions.find(x => x.ID == id);
@@ -222,26 +229,22 @@
             }
             console.log('#question > #question' + v['id'] + ' > fieldset > div > label.' + answer + '');
             $('#question > #question' + id + ' > fieldset > div > label.' + answer + '').css("background-color", "yellow");
-            $('#score').html('<h5>Your score is: <h4 id="score_save">' + score + '</h4></h5>');
-            // $('#saveButton').click(function(){
-            // <?php
-                //     $score = $_POST['score_save'];
-                //     session_start();
-                //     include('./include/php/session.php');
-                //     if(isset($_SESSION["sess_user"])) {
-                //       $query = "UPDATE user_test SET Score = $score where 
-                //                                                     (Select ID from user where Username = $_SESSION['sess_user']) = U_ID
-                //                                                     and T_ID = 1";
-                //     }
-                //     else {
-                //       include('./include/php/login_processing.php');
-                //     }
-                // 
-                ?>
-        })
-    })
+            $('#score').html('<h5>Your score is: ' + score + '</h5>');
 
-}
+        })
+        $('#saveButton').click(function() {
+            $.ajax({
+                type: "POST",
+                url: "saveResult.php",
+                data: "score=" + score,
+                success: function(data) {
+                    alert("Saving success");
+                }
+            });
+        });
+    }
+    // let user = $(v).find('fieldset input[type="radio"]:checked').attr('id');
+    // console.log(user);
 </script>
 
 </html>

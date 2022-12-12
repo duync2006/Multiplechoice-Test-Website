@@ -35,7 +35,7 @@ else
 $newConn->close();
 
 // * Connect database
-include('config.php');
+include('include/php/config.php');
 
 // * Create User table
 $sql = "CREATE TABLE User (
@@ -74,7 +74,7 @@ else
 
 // * Insert sample user account
 $sql = "INSERT INTO User (Name, Username, Password, Level)
-        VALUES ('Nhat Minh', 'lenhatminh', 'Minh17', 2)";
+        VALUES ('Nhat Minh', 'lenhatminh', 'Minh1745', 2)";
 
 if ($conn->query($sql))
 {

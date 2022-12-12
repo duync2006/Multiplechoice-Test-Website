@@ -26,7 +26,7 @@ while($result = $sql->fetch(PDO::FETCH_ASSOC))
 {
     // SHORCUT
     $data2.=            '<div class="col-1 m-3">';
-    $data2.=           ' <button type="button" class="btn btn-outline-dark">'.$index.'</button>';
+    $data2.=           ' <button id="'.$index.'" type="button" class="btn btn-outline-dark">'.$index.'</button>';
     $data2.=            '</div>';
     $index++;
 }

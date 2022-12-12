@@ -1,18 +1,17 @@
-var dropdownElements = document.querySelectorAll("li.dropdown");
+var dropdownElements = document.getElementsByClassName("dropdown");
 
-console.log(dropdownElements);
+console.log(dropdownElements.length);
 
-for(var dropdownElement of dropdownElements) {
-    var dropdownIcon = dropdownElement.querySelector("i.subnav-toggler");
-    var dropdownMenu = dropdownElement.querySelector("ul.dropdown-menu");
+for(var i = 0; i < dropdownElements.length; i++) {
+    dropdownElements[i].addEventListener("mouseover", function() {
+        var dropdownIcon = this.getElementsByClassName("subnav-toggler");
+        dropdownIcon[0].classList.remove("fa-caret-down");
+        dropdownIcon[0].classList.add("fa-caret-up");
+    })
 
-    dropdownElement.onmouseover = function() {
-        dropdownIcon.classList.remove('fa-caret-down');
-        dropdownIcon.classList.add('fa-caret-up');
-    }
-    
-    dropdownElement.onmouseout = function() {
-        dropdownIcon.classList.remove('fa-caret-up');
-        dropdownIcon.classList.add('fa-caret-down');
-    }
+    dropdownElements[i].addEventListener("mouseout", function() {
+        var dropdownIcon = this.getElementsByClassName("subnav-toggler");
+        dropdownIcon[0].classList.remove("fa-caret-up");
+        dropdownIcon[0].classList.add("fa-caret-down");
+    })
 }

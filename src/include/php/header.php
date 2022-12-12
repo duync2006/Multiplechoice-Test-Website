@@ -14,24 +14,66 @@
                             Test Library<i class="subnav-toggler fa-solid fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="subnav-item dropdown-item" href="#">Highly rated tests</a></li>
-                            <li><a class="subnav-item dropdown-item" href="#">Popular tests</a></li>
-                            <li><a class="subnav-item dropdown-item" href="#">Difficult tests</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=1">Beginner</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=2">Elementary</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=3">Intermediate</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=4">Upper Intermediate</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=5">Advanced</a></li>
+                            <li><a class="subnav-item dropdown-item" href="../../library.php?levelID=6">Proficient</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Instructors</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="subnav nav-link" href="index.php?page=categories" aria-expanded="false">
+                            Categories<i class="subnav-toggler fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <?php
+                                $sql = "SELECT * FROM Category LIMIT 5";
+                                $categories = mysqli_query($conn, $sql);
+
+                                if(mysqli_num_rows($categories) > 0) {
+                                    foreach($categories as $category) {
+                                        ?>
+                                        <li><a class="subnav-item dropdown-item" href="../../library.php?cateID=<?= $category["ID"]; ?>"><?= $category["C_Name"]; ?></a></li>
+                                        <?php
+                                    }
+                                    ?>
+                                    <li><a class="subnav-item dropdown-item" href="index.php?page=categories">See more</a></li>
+                                    <?php
+                                }
+                            ?>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Contact</a>
-                    </li>
+                    <?php
+                    if($user_level != 1) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Instructors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                        </li>
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=create-test">Create Test</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=create-category">Create Category</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
                 <ul class="navbar-nav right-side">
                     <?php
-                    if(isset($_SESSION["sess_user"])) {
+                    if($logged_in == true) {
                         ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php?page=profile"><i class="fa-solid fa-user me-2"></i><?= $user_name; ?></a>

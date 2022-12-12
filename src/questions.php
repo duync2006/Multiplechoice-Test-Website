@@ -13,8 +13,11 @@
 ?>
 
 <?php
-    $testID = $_GET['id'];
-    $sql = $conn->prepare("SELECT * from question ORDER BY RAND() WHERE T_ID = '.$testID.' ");
+    session_start();
+
+    $test_id = $_SESSION["testID"];
+    $sql = $conn->prepare("SELECT * from question WHERE question.T_ID =".$test_id."  ORDER BY RAND() ");
     $sql->execute();
+
     echo json_encode($sql->fetchAll());
 ?>
