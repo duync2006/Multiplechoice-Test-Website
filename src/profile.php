@@ -25,7 +25,7 @@ if (!isset($_SESSION['sess_user']))
 <body>
     <?php include('include/php/header.php'); ?>
 
-    <div class="container py-3">
+    <div class="container library-page py-3">
         <div class="row">
             <!-- Right sidebar -->
             <div class="col-sm-12 col-md-3 col-left me-5">

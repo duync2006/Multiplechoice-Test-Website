@@ -1,6 +1,11 @@
 <?php
 session_start();
+include('./include/php/session.php');
 $_SESSION["testID"] = $_GET['id'];
+$test_id = $_SESSION["testID"];
+$query = mysqli_query($conn, "SELECT Num_Ques FROM Test WHERE ID='$test_id'");
+$row = mysqli_fetch_assoc($query);
+$num_ques = $row["Num_Ques"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -108,8 +113,6 @@ $_SESSION["testID"] = $_GET['id'];
             </div>
         </div>
     </div>
-
-    <?php include('include/html/footer.html'); ?>
 </body>
 
 <script type="text/javascript">
@@ -145,7 +148,7 @@ $_SESSION["testID"] = $_GET['id'];
                 $string = '';
                 $.each(questions, function(k, v) {
                     $string += '<div class="row" style="margin-left: 20px" id="question' + v['ID'] + '">';
-                    $string += '<p id="' + v['ID'] + '" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Câu ' + $index + ':</span> ' + v['Content'] + '</p>';
+                    $string += '<p id="' + v['ID'] + '" style="font-size: medium; font-weight: bold"><span class="text-danger " style="text-decoration: underline ">Question ' + $index + ':</span> ' + v['Content'] + '</p>';
                     $string += '<fieldset id="' + v['ID'] + '">';
                     $string += '<div class="form-check">';
                     $string += ' <input id = "A' + $index + '" class="Option_A" type="radio" name="' + $index + '" value=""">';
@@ -178,20 +181,22 @@ $_SESSION["testID"] = $_GET['id'];
                 $('#question').html($string);
             }
         })
-        $.ajax({
+        /*$.ajax({
             url: 'shortcut.php',
             type: 'get',
             success: function($data2) {
                 // console.log($data2);
                 $('#shortcut_answer').html($data2);
             }
-        })
+        })*/
     }
     $('#btnSubmit').click(function() {
         $(this).hide();
         $('#btnStart').hide();
         checkResult();
     })
+
+    var num_ques = <?php echo $num_ques ?>;
 
     function checkResult() {
         //Get the answer of questiosn
@@ -223,13 +228,13 @@ $_SESSION["testID"] = $_GET['id'];
             }
             if (choice == answer) {
                 console.log("Question have id: " + id + " is correct.");
-                score += 10;
+                score += 1;
             } else {
                 console.log("Question have id: " + id + " is not correct.");
             }
             console.log('#question > #question' + v['id'] + ' > fieldset > div > label.' + answer + '');
             $('#question > #question' + id + ' > fieldset > div > label.' + answer + '').css("background-color", "yellow");
-            $('#score').html('<h5>Your score is: ' + score + '</h5>');
+            $('#score').html('<h5>Your score is: ' + (score / num_ques * 10).toFixed(2) + '</h5>');
 
         })
         $('#saveButton').click(function() {

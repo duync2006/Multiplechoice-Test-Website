@@ -48,7 +48,7 @@ select {
 }
 
 .library-page {
-  min-height: calc(100vh - 60px - 326px);
+  min-height: calc(100vh - 60px - 294px);
   height: auto;
 }
 
